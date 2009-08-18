@@ -1,27 +1,27 @@
 module WWMD
-  attr_accessor :curl_object
-  attr_accessor :body_data
-  attr_accessor :post_data
-  attr_accessor :header_data
-  attr_accessor :use_referer
-  attr_reader   :forms
-  attr_reader   :last_error
-  attr_reader   :links         # array of links (urls)
-  attr_reader   :jlinks        # array of included javascript files
-  attr_reader   :spider        # spider object
-  attr_reader   :scrape        # scrape object
-  attr_reader   :urlparse      # urlparse object
-  attr_reader   :comments
-
-  attr_accessor :base_url      # needed to properly munge relative urls into fq urls
-  attr_accessor :logged_in     # are we logged in?
-
-  attr_accessor :opts
-  attr_accessor :inputs
-
   # WWMD::Page is an extension of a Curl::Easy object which provides methods to
   # enhance and ease the performance of web application penetration testing.
   class Page
+
+    attr_accessor :curl_object
+    attr_accessor :body_data
+    attr_accessor :post_data
+    attr_accessor :header_data
+    attr_accessor :use_referer
+    attr_reader   :forms
+    attr_reader   :last_error
+    attr_reader   :links         # array of links (urls)
+    attr_reader   :jlinks        # array of included javascript files
+    attr_reader   :spider        # spider object
+    attr_reader   :scrape        # scrape object
+    attr_reader   :urlparse      # urlparse object
+    attr_reader   :comments
+
+    attr_accessor :base_url      # needed to properly munge relative urls into fq urls
+    attr_accessor :logged_in     # are we logged in?
+
+    attr_accessor :opts
+    attr_accessor :inputs
 
     include WWMDUtils
 
@@ -227,8 +227,8 @@ module WWMD
 
     # send methods not defined here to <tt>@curl_object</tt>
     def method_missing(methodname, *args)
-      if WWMD.respond_to?(methodname)
-        WWMD.send(methodname, *args)
+      if self.respond_to?(methodname)
+        self.send(methodname, *args)
       else
         @curl_object.send(methodname, *args)
       end
