@@ -30,6 +30,7 @@ module WWMD
   UA = {
     :mozilla => "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.16) Gecko/20080702 Firefox/2.0.0.16",
     :moz3 => "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.0.1) Gecko/2008070206 Firefox/3.0.1",
+    :iphone3 => "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1C25 Safari/419.3",
     :ie6 => "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
     :ie7 => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)",
     :ie8 => "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)",

@@ -107,6 +107,7 @@ module WWMD
       return false if self.opts[:parse] = false
       @body_data = ""
       @header_data.clear
+      @post_data = ""
       @last_error = nil
     end
 
@@ -182,12 +183,14 @@ module WWMD
     #
     # returns: <tt>array [ code, body_data.size ]</tt>
     def get(url=nil,parse=true)
+      self.clear_data
+      self.headers["Referer"] = self.cur if self.use_referer
       if !(url =~ /[a-z]+:\/\//) && parse
         self.url = @urlparse.parse(self.opts[:base_url],url).to_s if url
       elsif url
         self.url = url
       end
-      self.perform
+      self.http_get
       putw "WARN: authentication headers in response" if self.auth?
       self.set_data
     end
